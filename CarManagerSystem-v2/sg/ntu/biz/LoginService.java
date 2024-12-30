@@ -50,19 +50,13 @@ public class LoginService {
         }catch (IOException e){
             System.out.println("验证码生成错误：" + e.getMessage());
         }
-
-        //有三次机会
-        int n = 3;
-
-        //判断三次机会是否没用完
-        boolean flag = true;
+        int n = 3;//有三次机会
+        boolean flag = true;//判断三次机会是否没用完
         System.out.println("请输入验证码");
-        Scanner sc=new Scanner(System.in);
-        //用户不断输入验证码
-        while(flag){
+        Scanner sc= new Scanner(System.in);
+        while(flag){//用户不断输入验证码
             int input = sc.nextInt();
-            //判断验证码是否正确
-            if(input == number){
+            if(input == number){//判断验证码是否正确
                 //正确就进入到下一步
                 setLoginflag(true);
                 flag = false;
@@ -72,7 +66,6 @@ public class LoginService {
                     System.out.println("对不起您多次输入错误，存在可疑行为，系统已自动退回");
                     flag = false;
                     manager.setFlag(false);
-
                 }else {
                     System.out.println("请重新输入，还有" + n + "次机会");
 
